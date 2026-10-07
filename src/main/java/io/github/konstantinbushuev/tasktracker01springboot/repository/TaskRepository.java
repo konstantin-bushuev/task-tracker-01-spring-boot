@@ -13,6 +13,12 @@ public class TaskRepository {
 
     private final List<Task> tasks = new ArrayList<>();
 
+    private Long nextId = 1L;
+
+    public Long nextId() {
+        return nextId++;
+    }
+
     public List<Task> findAll() {
         return List.copyOf(tasks);
     }
