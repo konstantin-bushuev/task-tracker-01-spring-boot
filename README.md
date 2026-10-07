@@ -18,8 +18,8 @@
 * [x] `init spring boot project`
 * [x] `add Task model`
 * [x] `add in-memory TaskRepository`
-* [ ] `add TaskService`
-* [ ] `add GET /api/tasks`
+* [x] `add TaskService`
+* [x] `add GET /api/tasks`
 * [ ] `add GET /api/tasks/{id}`
 * [ ] `add POST /api/tasks`
 * [ ] `add PUT /api/tasks/{id}`
