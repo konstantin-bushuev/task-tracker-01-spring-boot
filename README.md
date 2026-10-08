@@ -21,7 +21,7 @@
 * [x] `add TaskService`
 * [x] `add GET /api/tasks`
 * [x] `add GET /api/tasks/{id}`
-* [ ] `add POST /api/tasks`
+* [x] `add POST /api/tasks`
 * [ ] `add PUT /api/tasks/{id}`
 * [ ] `add DELETE /api/tasks/{id}`
 * [ ] `add PATCH /api/tasks/{id}/complete`
