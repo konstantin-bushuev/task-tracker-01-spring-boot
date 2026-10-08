@@ -20,7 +20,7 @@
 * [x] `add in-memory TaskRepository`
 * [x] `add TaskService`
 * [x] `add GET /api/tasks`
-* [ ] `add GET /api/tasks/{id}`
+* [x] `add GET /api/tasks/{id}`
 * [ ] `add POST /api/tasks`
 * [ ] `add PUT /api/tasks/{id}`
 * [ ] `add DELETE /api/tasks/{id}`
