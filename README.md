@@ -23,7 +23,7 @@
 * [x] `add GET /api/tasks/{id}`
 * [x] `add POST /api/tasks`
 * [x] `add PUT /api/tasks/{id}`
-* [ ] `add DELETE /api/tasks/{id}`
+* [x] `add DELETE /api/tasks/{id}`
 * [ ] `add PATCH /api/tasks/{id}/complete`
 * [ ] `add request validation`
 * [ ] `add global exception handling`
