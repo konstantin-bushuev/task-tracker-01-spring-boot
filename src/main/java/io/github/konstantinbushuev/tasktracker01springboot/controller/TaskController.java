@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,5 +46,10 @@ public class TaskController {
             @RequestBody TaskRequestDTO request
     ) {
         return taskService.updateTask(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteTask(@PathVariable Long id) {
+        return taskService.deleteTask(id);
     }
 }
