@@ -22,7 +22,7 @@
 * [x] `add GET /api/tasks`
 * [x] `add GET /api/tasks/{id}`
 * [x] `add POST /api/tasks`
-* [ ] `add PUT /api/tasks/{id}`
+* [x] `add PUT /api/tasks/{id}`
 * [ ] `add DELETE /api/tasks/{id}`
 * [ ] `add PATCH /api/tasks/{id}/complete`
 * [ ] `add request validation`
