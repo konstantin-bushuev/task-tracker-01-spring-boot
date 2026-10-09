@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,14 +38,14 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task createTask(@RequestBody TaskRequestDTO request) {
+    public Task createTask(@Valid @RequestBody TaskRequestDTO request) {
         return taskService.createTask(request);
     }
 
     @PutMapping("/{id}")
     public Task updateTask(
             @PathVariable Long id,
-            @RequestBody TaskRequestDTO request
+            @Valid @RequestBody TaskRequestDTO request
     ) {
         return taskService.updateTask(id, request);
     }

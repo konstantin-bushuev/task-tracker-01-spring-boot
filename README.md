@@ -25,7 +25,7 @@
 * [x] `add PUT /api/tasks/{id}`
 * [x] `add DELETE /api/tasks/{id}`
 * [x] `add PATCH /api/tasks/{id}/complete`
-* [ ] `add request validation`
+* [x] `add request validation`
 * [ ] `add global exception handling`
 * [ ] `complete README`
 
