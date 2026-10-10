@@ -4,11 +4,11 @@ import io.github.konstantinbushuev.tasktracker01springboot.dto.TaskRequestDTO;
 import io.github.konstantinbushuev.tasktracker01springboot.model.Task;
 import io.github.konstantinbushuev.tasktracker01springboot.model.TaskStatus;
 import io.github.konstantinbushuev.tasktracker01springboot.repository.TaskRepository;
+import io.github.konstantinbushuev.tasktracker01springboot.exception.TaskNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -39,16 +39,14 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Optional<Task> getTask(Long id) {
-        return taskRepository.findById(id);
+    public Task getTask(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
     }
 
     public Task updateTask(Long id, TaskRequestDTO request) {
-        Task initialTask = taskRepository.findById(id).orElse(null);
-
-        if (initialTask == null) {
-            return null;
-        }
+        Task initialTask = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
 
         Task task = new Task(
                 id,
@@ -65,11 +63,8 @@ public class TaskService {
     }
 
     public Task completeTask(Long id) {
-        Task initialTask = taskRepository.findById(id).orElse(null);
-
-        if (initialTask == null) {
-            return null;
-        }
+        Task initialTask = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
 
         Task task = new Task(
                 id,
@@ -85,8 +80,12 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public boolean deleteTask(Long id) {
-        return taskRepository.deleteById(id);
+    public void deleteTask(Long id) {
+        boolean deleted = taskRepository.deleteById(id);
+
+        if (!deleted) {
+            throw new TaskNotFoundException(id);
+        }
     }
 
 }

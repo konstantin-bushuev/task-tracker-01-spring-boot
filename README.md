@@ -26,7 +26,7 @@
 * [x] `add DELETE /api/tasks/{id}`
 * [x] `add PATCH /api/tasks/{id}/complete`
 * [x] `add request validation`
-* [ ] `add global exception handling`
+* [x] `add global exception handling`
 * [ ] `complete README`
 
 ## Запуск
