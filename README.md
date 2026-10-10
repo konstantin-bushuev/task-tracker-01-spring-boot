@@ -9,9 +9,10 @@
 ## Стек
 
 * Java 21
-* Gradle
+* Gradle (Kotlin DSL)
 * Spring Boot
 * Spring Web
+* Bean Validation
 
 ## План
 
@@ -27,61 +28,51 @@
 * [x] `add PATCH /api/tasks/{id}/complete`
 * [x] `add request validation`
 * [x] `add global exception handling`
-* [ ] `complete README`
+* [x] `complete README`
 
 ## Запуск
 
+1. Требуется установленная Java 21
+
+2. Клонировать репозиторий
+
+3. Сборка и проверка:
+```bash
+./gradlew build
+```
+
+4. Запуск:
 ```bash
 ./gradlew bootRun
 ```
 
-<!--
-Приложение доступно по адресу:
-
-```text
-http://localhost:8080
-```
- -->
+Приложение запускается по адресу http://localhost:8080
 
 ## API
 
-### Get all tasks
 
-```text
-GET /api/tasks
+| Метод | Endpoint | Описание |
+|---|---|---|
+| GET | `/api/tasks` | Получить все задачи |
+| GET | `/api/tasks/{id}` | Получить задачу по id |
+| POST | `/api/tasks` | Создать задачу |
+| PUT | `/api/tasks/{id}` | Обновить задачу |
+| DELETE | `/api/tasks/{id}` | Удалить задачу |
+| PATCH | `/api/tasks/{id}/complete` | Завершить задачу |
+
+Для `POST` и `PUT` используется JSON:
+
+```json
+{
+  "title": "Task title",
+  "description": "Task description"
+}
 ```
 
-### Get task
+- `title` — обязательное поле, максимум 30 символов.
+- `description` — необязательное поле, максимум 100 символов.
 
-```text
-GET /api/tasks/{id}
-```
-
-### Create task
-
-```text
-POST /api/tasks
-Content-Type: application/json
-```
-
-### Update task
-
-```text
-PUT /api/tasks/{id}
-Content-Type: application/json
-```
-
-### Delete task
-
-```text
-DELETE /api/tasks/{id}
-```
-
-### Complete task
-
-```text
-PATCH /api/tasks/{id}/complete
-```
+Новые задачи создаются со статусом `TODO`.
 
 ## Архитектура
 
@@ -94,15 +85,30 @@ Repository
     ↓
 List<Task>
 ```
+## Структура проекта
 
-<!--
-## Что изменилось
-
-Начальный этап проекта. Создано минимальное Spring Boot REST API с хранением данных в памяти.
+```text
+src/main/java/io/github/konstantinbushuev/tasktracker01springboot/
+├── model
+│   ├── Task.java                       # модель данных
+│   └── TaskStatus.java                 # статусы задач   
+├── dto
+│   ├── TaskRequestDTO.java             # входные данные для запросов
+│   └── ErrorResponse.java              # формат ошибок  
+├── repository
+│   └── TaskRepository.java             # хранение задач в памяти
+├── service
+│   └── TaskService.java                # бизнес-логика
+├── controller
+│   └── TaskController.java             # HTTP endpoints
+└── exception/                      
+    ├── GlobalExceptionHandler.java     # глобальная обработка ошибок API
+    └── TaskNotFoundException.java      # исключение для ненайденной задачи    
+        
+```
 
 ## Следующий этап
 
-`task-tracker-02-tests-ci`
+[task-tracker-02-tests-ci](https://github.com/konstantin-bushuev/task-tracker-02-tests-ci)
 
 Добавление тестов и GitHub Actions CI.
--->
