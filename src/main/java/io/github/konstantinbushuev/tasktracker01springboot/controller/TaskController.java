@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import jakarta.validation.Valid;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -33,7 +32,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Task> getTask(@PathVariable Long id) {
+    public Task getTask(@PathVariable Long id) {
         return taskService.getTask(id);
     }
 
@@ -51,8 +50,8 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteTask(@PathVariable Long id) {
-        return taskService.deleteTask(id);
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
     }
 
     @PatchMapping("/{id}/complete")
